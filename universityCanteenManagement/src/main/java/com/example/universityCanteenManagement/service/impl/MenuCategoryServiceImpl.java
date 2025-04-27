@@ -24,27 +24,12 @@ public class MenuCategoryServiceImpl implements MenuCategoryService {
     public MenuCategoryResponseDTO addCategory(MenuCategoryAddRequestDTO dto) {
         MenuCategory category = new MenuCategory();
 
-        if (dto.getParentCategoryId() == null) {
+        Branch branch = branchRepository.findById(dto.getBranchId())
+                .orElseThrow(() -> new RuntimeException("Branch with the following ID is not found :("));
 
-            Branch branch = branchRepository.findById(dto.getBranchId())
-                    .orElseThrow(() -> new RuntimeException("Branch with the following ID is not found :("));
-
-            category.setName(dto.getName());
-            category.setImage(dto.getImage());
-            category.setBranch(branch);
-        }else {
-            MenuCategory parentCategory = categoryRepository.findById(dto.getParentCategoryId())
-                    .orElseThrow(() -> new RuntimeException("ParentCategory with the following ID is not found :("));
-
-            Branch branch = branchRepository.findById(dto.getBranchId())
-                    .orElseThrow(() -> new RuntimeException("Branch with the following ID is not found :("));
-            category.setName(dto.getName());
-            category.setImage(dto.getImage());
-            category.setParentCategory(parentCategory);
-            category.setBranch(branch);
-
-        }
-
+        category.setName(dto.getName());
+        category.setImage(dto.getImage());
+        category.setBranch(branch);
         categoryRepository.save(category);
 
         return toCategoryResponseDTO(category);
@@ -93,7 +78,7 @@ public class MenuCategoryServiceImpl implements MenuCategoryService {
                 .id(category.getId())
                 .name(category.getName())
                 .image(category.getImage())
-                .categories(category.getCategories())
+//                .categories(category.getCategories())
                 .branchId(category.getBranch().getId())
                 .build();
     }

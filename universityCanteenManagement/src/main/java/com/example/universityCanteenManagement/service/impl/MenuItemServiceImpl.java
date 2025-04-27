@@ -29,6 +29,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         MenuItem menuItem = MenuItem.builder()
                 .name(dto.getName())
                 .description(dto.getDescription())
+                .image(dto.getImage())
                 .price(dto.getPrice())
                 .available(dto.isAvailable())
                 .menuCategory(menuCategory)
@@ -79,7 +80,9 @@ public class MenuItemServiceImpl implements MenuItemService {
                 .id(menuItem.getId())
                 .name(menuItem.getName())
                 .description(menuItem.getDescription())
+                .image(menuItem.getImage())
                 .price(menuItem.getPrice())
+                .available(menuItem.isAvailable())
                 .categoryId(menuItem.getMenuCategory().getId())
                 .build();
     }
@@ -90,6 +93,7 @@ public class MenuItemServiceImpl implements MenuItemService {
 
         menuItem.setName(dto.getName());
         menuItem.setDescription(dto.getDescription());
+        menuItem.setImage(dto.getImage());
         menuItem.setAvailability(dto.isAvailable());
         menuItem.setMenuCategory(menuCategory);
 

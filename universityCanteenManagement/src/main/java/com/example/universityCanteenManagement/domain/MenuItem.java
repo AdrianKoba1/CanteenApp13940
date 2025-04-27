@@ -21,8 +21,11 @@ public class MenuItem {
 
     private String name;
     private String description;
+    private String image;
     private double price;
     private boolean available;
+
+
 
     @JsonBackReference
     @ManyToOne

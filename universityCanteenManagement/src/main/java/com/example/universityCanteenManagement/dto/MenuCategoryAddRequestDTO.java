@@ -11,6 +11,6 @@ public class MenuCategoryAddRequestDTO {
 
     private String name;
     private String image;
-    private Long parentCategoryId;
+//    private Long parentCategoryId;
     private Long branchId;
 }

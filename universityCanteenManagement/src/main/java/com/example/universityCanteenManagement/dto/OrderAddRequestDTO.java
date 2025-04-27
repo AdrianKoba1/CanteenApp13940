@@ -15,6 +15,6 @@ public class OrderAddRequestDTO {
     private Long userId;
     private LocalDateTime desiredPickupTime;
     private OrderStatus orderStatus;
-    private double totalPrice;
+//    private double totalPrice;
     private List<Long> itemIDs;
 }

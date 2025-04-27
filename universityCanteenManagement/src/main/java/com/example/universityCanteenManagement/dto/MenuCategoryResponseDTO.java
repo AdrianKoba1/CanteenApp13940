@@ -15,6 +15,6 @@ public class MenuCategoryResponseDTO {
     private Long id;
     private String name;
     private String image;
-    private Set<MenuCategory> categories;
+//    private Set<MenuCategory> categories;
     private Long branchId;
 }

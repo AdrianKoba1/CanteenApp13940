@@ -27,5 +27,4 @@ public class Branch {
     @JsonManagedReference
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<MenuCategory> menuCategories;
-
 }

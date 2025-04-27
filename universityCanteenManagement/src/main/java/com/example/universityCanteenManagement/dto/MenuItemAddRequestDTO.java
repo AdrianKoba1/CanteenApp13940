@@ -13,6 +13,7 @@ public class MenuItemAddRequestDTO {
 
     private String name;
     private String description;
+    private String image;
     private double price;
     private boolean available;
     private Long categoryId;
