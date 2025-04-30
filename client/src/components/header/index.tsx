@@ -21,10 +21,15 @@ const Header = () => {
     0
   );
 
+  // Check if the current path is the login page
+  if (currentPath === "/") {
+    return null; // Don't render the header on the login page
+  }
+
   const navigation = [
     {
       name: "menu",
-      path: "/",
+      path: "/menu",
     },
     {
       name: "cart",
@@ -39,6 +44,7 @@ const Header = () => {
       path: "/profile",
     },
   ];
+
   return (
     <Box
       sx={{

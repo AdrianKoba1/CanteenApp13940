@@ -3,11 +3,14 @@ import { Cart } from "./components/Cart";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
 import type { Item } from "@/store/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
+import { clearCart } from "@/store/features/cart/cartSlice";
 
 export const CartPage = () => {
   const items = useSelector((state: RootState) => state.cart.items);
   const cartItems: Item[] = Object.values(items);
   const hasItems = !!cartItems.length;
+  const dispatch = useDispatch();
   console.log(items);
   return (
     <Box
@@ -26,7 +29,7 @@ export const CartPage = () => {
         {hasItems ? (
           <>
             {cartItems.map((item) => (
-              <Cart data={item.item} />
+              <Cart key={item.item.id} data={item.item} count={item.count} />
             ))}
           </>
         ) : (
@@ -48,7 +51,9 @@ export const CartPage = () => {
               aria-label="Disabled button group"
               size="large"
             >
-              <Button color="error">Clear</Button>
+              <Button color="error" onClick={() => dispatch(clearCart())}>
+                Clear
+              </Button>
               <Button>Order</Button>
             </ButtonGroup>
           </Box>

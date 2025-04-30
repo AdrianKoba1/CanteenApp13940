@@ -12,9 +12,10 @@ import type { FC } from "react";
 
 interface CartProps {
   data: Meal;
+  count: number;
 }
 
-export const Cart: FC<CartProps> = ({ data }) => (
+export const Cart: FC<CartProps> = ({ data, count }) => (
   <Card
     sx={{
       height: "300px",
@@ -80,7 +81,7 @@ export const Cart: FC<CartProps> = ({ data }) => (
           color: "#CAA8F5",
         }}
       >
-        <Typography variant="h4">2x</Typography>
+        <Typography variant="h4">{count}x</Typography>
         <Typography variant="h4">${data.price}</Typography>
       </Box>
     </CardActions>

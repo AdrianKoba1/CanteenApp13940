@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as MenuImport } from './routes/menu'
 import { Route as IndexImport } from './routes/index'
 
 // Create Virtual Routes
@@ -23,6 +24,12 @@ const LoginIndexLazyImport = createFileRoute('/login/')()
 const CartIndexLazyImport = createFileRoute('/cart/')()
 
 // Create/Update Routes
+
+const MenuRoute = MenuImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -65,6 +72,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuImport
+      parentRoute: typeof rootRoute
+    }
     '/cart/': {
       id: '/cart/'
       path: '/cart'
@@ -100,6 +114,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/menu': typeof MenuRoute
   '/cart': typeof CartIndexLazyRoute
   '/login': typeof LoginIndexLazyRoute
   '/orders': typeof OrdersIndexLazyRoute
@@ -108,6 +123,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/menu': typeof MenuRoute
   '/cart': typeof CartIndexLazyRoute
   '/login': typeof LoginIndexLazyRoute
   '/orders': typeof OrdersIndexLazyRoute
@@ -117,6 +133,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/menu': typeof MenuRoute
   '/cart/': typeof CartIndexLazyRoute
   '/login/': typeof LoginIndexLazyRoute
   '/orders/': typeof OrdersIndexLazyRoute
@@ -125,15 +142,23 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cart' | '/login' | '/orders' | '/profile'
+  fullPaths: '/' | '/menu' | '/cart' | '/login' | '/orders' | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cart' | '/login' | '/orders' | '/profile'
-  id: '__root__' | '/' | '/cart/' | '/login/' | '/orders/' | '/profile/'
+  to: '/' | '/menu' | '/cart' | '/login' | '/orders' | '/profile'
+  id:
+    | '__root__'
+    | '/'
+    | '/menu'
+    | '/cart/'
+    | '/login/'
+    | '/orders/'
+    | '/profile/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MenuRoute: typeof MenuRoute
   CartIndexLazyRoute: typeof CartIndexLazyRoute
   LoginIndexLazyRoute: typeof LoginIndexLazyRoute
   OrdersIndexLazyRoute: typeof OrdersIndexLazyRoute
@@ -142,6 +167,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MenuRoute: MenuRoute,
   CartIndexLazyRoute: CartIndexLazyRoute,
   LoginIndexLazyRoute: LoginIndexLazyRoute,
   OrdersIndexLazyRoute: OrdersIndexLazyRoute,
@@ -159,6 +185,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/menu",
         "/cart/",
         "/login/",
         "/orders/",
@@ -167,6 +194,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/menu": {
+      "filePath": "menu.tsx"
     },
     "/cart/": {
       "filePath": "cart/index.lazy.tsx"

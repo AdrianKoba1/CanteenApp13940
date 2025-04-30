@@ -1,6 +1,6 @@
-import Menu from "@/features/menu";
+import { Login } from "@/components/login";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
-  component: Menu,
+  component: Login,
 });

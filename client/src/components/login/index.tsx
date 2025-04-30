@@ -1,3 +1,4 @@
+// src/components/Login.tsx
 import React, { useState } from "react";
 import {
   Box,
@@ -14,6 +15,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { useRouter } from "@tanstack/react-router"; // <-- Import useRouter from TanStack Router
 
 export const Login: React.FC = () => {
   const [creds, setCreds] = useState({
@@ -24,6 +26,7 @@ export const Login: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { navigate } = useRouter(); // <-- Use the navigate method from TanStack Router
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked, type } = e.target;
@@ -42,13 +45,16 @@ export const Login: React.FC = () => {
       return;
     }
     console.log("Logging in with:", creds);
+
+    // Dummy login success — navigate to the menu (root)
+    navigate({ to: "/menu" }); // Navigate to '/menu' after login
   };
 
   return (
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #230C33 0%, #230C33 100%)", // dark purple background
+        background: "linear-gradient(135deg, #230C33 0%, #230C33 100%)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -69,7 +75,7 @@ export const Login: React.FC = () => {
               <Avatar
                 sx={{
                   m: "0 auto",
-                  bgcolor: "#B080EF", // Icon background
+                  bgcolor: "#B080EF",
                   width: 72,
                   height: 72,
                 }}
@@ -79,21 +85,11 @@ export const Login: React.FC = () => {
               <Typography
                 variant="h3"
                 component="h1"
-                sx={{
-                  mt: 2,
-                  fontWeight: "bold",
-                  color: "#B080EF", // Title color same as icons
-                }}
+                sx={{ mt: 2, fontWeight: "bold", color: "#B080EF" }}
               >
                 Welcome to QuickBite
               </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  mt: 1,
-                  color: "#C7C7C7", // lighter text for subheading
-                }}
-              >
+              <Typography variant="h6" sx={{ mt: 1, color: "#C7C7C7" }}>
                 Please login to your account
               </Typography>
             </Box>
@@ -113,7 +109,7 @@ export const Login: React.FC = () => {
               <Box>
                 <Typography
                   variant="subtitle1"
-                  sx={{ mb: 1, fontWeight: 600, color: "#ffffff" }} // label black
+                  sx={{ mb: 1, fontWeight: 600, color: "#ffffff" }}
                 >
                   Username
                 </Typography>
@@ -125,9 +121,7 @@ export const Login: React.FC = () => {
                   size="medium"
                   fullWidth
                   placeholder="Enter your username"
-                  InputProps={{
-                    style: { backgroundColor: "#ffffff" },
-                  }}
+                  InputProps={{ style: { backgroundColor: "#ffffff" } }}
                 />
               </Box>
 
@@ -135,7 +129,7 @@ export const Login: React.FC = () => {
               <Box>
                 <Typography
                   variant="subtitle1"
-                  sx={{ mb: 1, fontWeight: 600, color: "#ffffff" }} // label black
+                  sx={{ mb: 1, fontWeight: 600, color: "#ffffff" }}
                 >
                   Password
                 </Typography>
@@ -148,17 +142,15 @@ export const Login: React.FC = () => {
                   size="medium"
                   fullWidth
                   placeholder="Enter your password"
-                  InputProps={{
-                    style: { backgroundColor: "#ffffff" },
-                  }}
+                  InputProps={{ style: { backgroundColor: "#ffffff" } }}
                 />
               </Box>
 
-              {/* Remember Me Checkbox */}
+              {/* Keep Me Logged In */}
               <Box>
                 <Typography
                   variant="subtitle1"
-                  sx={{ mb: 1, fontWeight: 600, color: "#ffffff" }} // label black
+                  sx={{ mb: 1, fontWeight: 600, color: "#ffffff" }}
                 >
                   Options
                 </Typography>
@@ -189,9 +181,7 @@ export const Login: React.FC = () => {
                   fontSize: "1.2rem",
                   fontWeight: 600,
                   backgroundColor: "#B080EF",
-                  "&:hover": {
-                    backgroundColor: "#A16EE5",
-                  },
+                  "&:hover": { backgroundColor: "#A16EE5" },
                 }}
               >
                 Log In
