@@ -1,0 +1,49 @@
+---- Insert a single branch (Main Campus)
+--INSERT INTO branches (name, description, location, contact_info)
+--VALUES
+--    ('Main Campus', 'Main campus of the university', 'Main Street, City', '123-456-7890');
+--
+---- Insert top-level categories (no parent category anymore)
+--INSERT INTO menu_categories (name, image, branch_id, parent_category_id)
+--VALUES
+--    ('Mains', 'https://picsum.photos/seed/mains/200/200', 1, NULL),
+--    ('Desserts', 'https://picsum.photos/seed/desserts/200/200', 1, NULL),
+--    ('Drinks', 'https://picsum.photos/seed/drinks/200/200', 1, NULL),
+--    ('Salads', 'https://picsum.photos/seed/salads/200/200', 1, NULL);
+--
+---- Insert menu items linked directly to top categories
+--
+---- Mains Items
+--INSERT INTO menu_items (name, description, price, available, category_id)
+--VALUES
+--    ('Spaghetti Carbonara', 'Classic Italian pasta with creamy sauce and bacon', 8.99, true, (SELECT id FROM menu_categories WHERE name = 'Mains' LIMIT 1)),
+--    ('Lasagna', 'Layered pasta with cheese, sauce, and ground beef', 9.99, true, (SELECT id FROM menu_categories WHERE name = 'Mains' LIMIT 1)),
+--    ('Rib-eye Steak', 'Juicy grilled rib-eye steak served with mashed potatoes', 18.99, true, (SELECT id FROM menu_categories WHERE name = 'Mains' LIMIT 1)),
+--    ('Grilled Chicken', 'Grilled chicken with smoky BBQ sauce', 12.00, true, (SELECT id FROM menu_categories WHERE name = 'Mains' LIMIT 1)),
+--    ('Classic Burger', 'Beef patty with lettuce, tomato, and cheese on a bun', 7.50, true, (SELECT id FROM menu_categories WHERE name = 'Mains' LIMIT 1));
+--
+---- Desserts Items
+--INSERT INTO menu_items (name, description, price, available, category_id)
+--VALUES
+--    ('Chocolate Cake', 'Rich chocolate layered cake', 5.00, true, (SELECT id FROM menu_categories WHERE name = 'Desserts' LIMIT 1)),
+--    ('Cheesecake', 'Creamy cheesecake with a graham cracker crust', 6.50, true, (SELECT id FROM menu_categories WHERE name = 'Desserts' LIMIT 1)),
+--    ('Vanilla Ice Cream', 'Homemade vanilla ice cream scoop', 3.00, true, (SELECT id FROM menu_categories WHERE name = 'Desserts' LIMIT 1)),
+--    ('Strawberry Ice Cream', 'Creamy strawberry ice cream with real strawberries', 3.50, true, (SELECT id FROM menu_categories WHERE name = 'Desserts' LIMIT 1)),
+--    ('Fruit Tart', 'Tart filled with fresh fruit and custard', 4.50, true, (SELECT id FROM menu_categories WHERE name = 'Desserts' LIMIT 1));
+--
+---- Drinks Items
+--INSERT INTO menu_items (name, description, price, available, category_id)
+--VALUES
+--    ('Green Tea', 'Hot brewed organic green tea', 2.00, true, (SELECT id FROM menu_categories WHERE name = 'Drinks' LIMIT 1)),
+--    ('Black Coffee', 'Hot brewed coffee with a rich aroma', 2.50, true, (SELECT id FROM menu_categories WHERE name = 'Drinks' LIMIT 1)),
+--    ('Cappuccino', 'Espresso with steamed milk foam', 3.00, true, (SELECT id FROM menu_categories WHERE name = 'Drinks' LIMIT 1)),
+--    ('Lemonade', 'Refreshing homemade lemonade', 2.20, true, (SELECT id FROM menu_categories WHERE name = 'Drinks' LIMIT 1)),
+--    ('Sprite', 'Chilled can of Sprite', 1.50, true, (SELECT id FROM menu_categories WHERE name = 'Drinks' LIMIT 1));
+--
+---- Salads Items
+--INSERT INTO menu_items (name, description, price, available, category_id)
+--VALUES
+--    ('Caesar Salad', 'Romaine lettuce, croutons, parmesan, Caesar dressing', 6.00, true, (SELECT id FROM menu_categories WHERE name = 'Salads' LIMIT 1)),
+--    ('Greek Salad', 'Tomatoes, cucumbers, olives, and feta cheese', 6.50, true, (SELECT id FROM menu_categories WHERE name = 'Salads' LIMIT 1)),
+--    ('Tropical Fruit Salad', 'Mango, pineapple, and coconut', 5.00, true, (SELECT id FROM menu_categories WHERE name = 'Salads' LIMIT 1)),
+--    ('Garden Salad', 'Fresh garden vegetables with light dressing', 5.50, true, (SELECT id FROM menu_categories WHERE name = 'Salads' LIMIT 1));

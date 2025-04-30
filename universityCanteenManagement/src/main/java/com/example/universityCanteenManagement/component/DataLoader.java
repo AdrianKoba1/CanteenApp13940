@@ -39,14 +39,6 @@ public class DataLoader implements CommandLineRunner {
             owner.setRole(Role.OWNER);
             userRepository.save(owner);
         }
-        if (!userRepository.existsByUsername("Ravshan")) {
-            User admin = new User();
-            admin.setUsername("Ravshan");
-            admin.setPassword(passwordEncoder.encode("1234567"));
-            admin.setEmail("ravshantuymurodov39@gmail.com");
-            admin.setRole(Role.ADMIN);
-            userRepository.save(admin);
-        }
 
         // --- 2) BRANCH ---
         Branch branch = branchRepository
@@ -60,124 +52,124 @@ public class DataLoader implements CommandLineRunner {
                     return branchRepository.save(b);
                 });
 
-        MenuCategory mains    = findOrCreateCategory("Mains",    "https://picsum.photos/seed/mains/200/200",    branch);
-        MenuCategory desserts = findOrCreateCategory("Desserts", "https://picsum.photos/seed/desserts/200/200", branch);
-        MenuCategory drinks   = findOrCreateCategory("Drinks",   "https://picsum.photos/seed/drinks/200/200",   branch);
-        MenuCategory salads   = findOrCreateCategory("Salads",   "https://picsum.photos/seed/salads/200/200",   branch);
+        MenuCategory mains    = findOrCreateCategory("Mains",    "https://static.vecteezy.com/system/resources/thumbnails/051/028/326/small/large-group-of-barbecue-food-isolated-on-transparent-background-top-view-png.png",    branch);
+        MenuCategory desserts = findOrCreateCategory("Desserts", "https://static.vecteezy.com/system/resources/previews/053/823/165/non_2x/a-white-plate-with-a-variety-of-desserts-including-cupcakes-brownies-and-fruit-png.png", branch);
+        MenuCategory drinks   = findOrCreateCategory("Drinks",   "https://static.vecteezy.com/system/resources/previews/048/723/424/non_2x/drinks-isolated-on-transparent-background-free-png.png",   branch);
+        MenuCategory salads   = findOrCreateCategory("Salads",   "https://static.vecteezy.com/system/resources/thumbnails/049/949/831/small/colorful-salad-with-mixed-greens-cut-out-transparent-png.png",   branch);
 
         // 4) MENU ITEMS (now with image URLs)
         createIfAbsent("Spaghetti Carbonara",
                 "Classic Italian pasta with creamy sauce and bacon",
                 8.99,
-                "https://picsum.photos/seed/spaghettiCarbonara/200/200",
+                "https://static.vecteezy.com/system/resources/previews/053/017/198/non_2x/carbonara-isolated-on-transparent-background-png.png",
                 mains);
 
         createIfAbsent("Lasagna",
                 "Layered pasta with cheese, sauce, and ground beef",
                 9.99,
-                "https://picsum.photos/seed/lasagna/200/200",
+                "https://static.vecteezy.com/system/resources/thumbnails/033/544/617/small_2x/lasagna-on-a-plate-isolated-on-transparent-background-ai-generated-png.png",
                 mains);
 
         createIfAbsent("Rib-eye Steak",
                 "Juicy grilled rib-eye steak served with mashed potatoes",
                 18.99,
-                "https://picsum.photos/seed/ribeysteak/200/200",
+                "https://static.vecteezy.com/system/resources/previews/041/326/132/non_2x/ai-generated-grill-ribeye-steak-isolated-on-transparent-background-png.png",
                 mains);
 
         createIfAbsent("Grilled Chicken",
                 "Grilled chicken with smoky BBQ sauce",
                 12.00,
-                "https://picsum.photos/seed/grilledChicken/200/200",
+                "https://static.vecteezy.com/system/resources/previews/043/601/952/non_2x/grilled-chicken-on-isolated-transparent-background-png.png",
                 mains);
 
         createIfAbsent("Classic Burger",
                 "Beef patty with lettuce, tomato, and cheese on a bun",
                 7.50,
-                "https://picsum.photos/seed/classicBurger/200/200",
+                "https://static.vecteezy.com/system/resources/previews/047/591/502/non_2x/classic-cheeseburger-with-toppings-on-transparent-background-png.png",
                 mains);
 
         createIfAbsent("Chocolate Cake",
                 "Rich chocolate layered cake",
                 5.00,
-                "https://picsum.photos/seed/chocolateCake/200/200",
+                "https://static.vecteezy.com/system/resources/previews/048/563/692/non_2x/chocolate-cake-slice-on-transparent-background-png.png",
                 desserts);
 
         createIfAbsent("Cheesecake",
                 "Creamy cheesecake with a graham cracker crust",
                 6.50,
-                "https://picsum.photos/seed/cheesecake/200/200",
+                "https://static.vecteezy.com/system/resources/previews/052/243/732/non_2x/cheesecake-isolated-on-transparent-background-png.png",
                 desserts);
 
         createIfAbsent("Vanilla Ice Cream",
                 "Homemade vanilla ice cream scoop",
                 3.00,
-                "https://picsum.photos/seed/vanillaIceCream/200/200",
+                "https://static.vecteezy.com/system/resources/previews/011/809/006/non_2x/3d-rendering-vanilla-ice-cream-on-transparent-background-png.png",
                 desserts);
 
         createIfAbsent("Strawberry Ice Cream",
                 "Creamy strawberry ice cream with real strawberries",
                 3.50,
-                "https://picsum.photos/seed/strawberryIceCream/200/200",
+                "https://static.vecteezy.com/system/resources/previews/027/143/707/non_2x/yummy-strawberry-ice-cream-cone-isolated-on-transparent-background-png.png",
                 desserts);
 
         createIfAbsent("Fruit Tart",
                 "Tart filled with fresh fruit and custard",
                 4.50,
-                "https://picsum.photos/seed/fruitTart/200/200",
+                "https://static.vecteezy.com/system/resources/previews/052/243/981/non_2x/fresh-fruit-tart-isolated-on-transparent-background-png.png",
                 desserts);
 
         createIfAbsent("Green Tea",
                 "Hot brewed organic green tea",
                 2.00,
-                "https://picsum.photos/seed/greenTea/200/200",
+                "https://static.vecteezy.com/system/resources/previews/050/609/655/non_2x/green-tea-cup-on-transparent-background-png.png",
                 drinks);
 
         createIfAbsent("Black Coffee",
                 "Hot brewed coffee with a rich aroma",
                 2.50,
-                "https://picsum.photos/seed/blackCoffee/200/200",
+                "https://static.vecteezy.com/system/resources/previews/055/981/052/non_2x/a-cup-of-black-coffee-isolated-on-a-transparent-background-png.png",
                 drinks);
 
         createIfAbsent("Cappuccino",
                 "Espresso with steamed milk foam",
                 3.00,
-                "https://picsum.photos/seed/cappuccino/200/200",
+                "https://static.vecteezy.com/system/resources/previews/011/771/100/non_2x/cup-of-cappuccino-png.png",
                 drinks);
 
         createIfAbsent("Lemonade",
                 "Refreshing homemade lemonade",
                 2.20,
-                "https://picsum.photos/seed/lemonade/200/200",
+                "https://static.vecteezy.com/system/resources/previews/059/633/035/non_2x/refreshing-lemonade-drink-with-slices-and-straw-on-transparent-background-png.png",
                 drinks);
 
         createIfAbsent("Sprite",
                 "Chilled can of Sprite",
                 1.50,
-                "https://picsum.photos/seed/sprite/200/200",
+                "https://static.vecteezy.com/system/resources/previews/054/314/915/non_2x/sprite-can-on-transparent-background-free-png.png",
                 drinks);
 
         createIfAbsent("Caesar Salad",
                 "Romaine lettuce, croutons, parmesan, Caesar dressing",
                 6.00,
-                "https://picsum.photos/seed/caesarSalad/200/200",
+                "https://static.vecteezy.com/system/resources/previews/046/828/252/non_2x/delicious-caesar-salad-in-a-white-bowl-isolated-on-transparent-background-png.png",
                 salads);
 
         createIfAbsent("Greek Salad",
                 "Tomatoes, cucumbers, olives, and feta cheese",
                 6.50,
-                "https://picsum.photos/seed/greekSalad/200/200",
+                "https://static.vecteezy.com/system/resources/previews/046/828/279/non_2x/delicious-greek-salad-in-a-bowl-isolated-on-transparent-background-png.png",
                 salads);
 
         createIfAbsent("Tropical Fruit Salad",
                 "Mango, pineapple, and coconut",
                 5.00,
-                "https://picsum.photos/seed/tropicalFruitSalad/200/200",
+                "https://static.vecteezy.com/system/resources/thumbnails/059/591/226/small/fruit-salad-mix-with-pineapple-berries-and-mint-cut-out-transparent-png.png",
                 salads);
 
         createIfAbsent("Garden Salad",
                 "Fresh garden vegetables with light dressing",
                 5.50,
-                "https://picsum.photos/seed/gardenSalad/200/200",
+                "https://static.vecteezy.com/system/resources/previews/048/557/893/non_2x/a-garden-salad-served-in-a-bowl-isolated-against-a-transparent-background-for-crisp-presentation-free-png.png",
                 salads);
     }
 

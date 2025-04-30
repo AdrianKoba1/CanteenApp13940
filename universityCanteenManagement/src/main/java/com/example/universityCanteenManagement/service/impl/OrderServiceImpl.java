@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
                 .orderTime(LocalDateTime.now())
                 .desiredPickupTime(dto.getDesiredPickupTime())
                 .orderStatus(OrderStatus.PENDING)
-                .totalPrice(dto.getTotalPrice())
+//                .totalPrice(dto.getTotalPrice())
                 .orderItems(orderItemList)
                 .build();
 
